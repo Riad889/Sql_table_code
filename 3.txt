@@ -1,0 +1,51 @@
+CREATE TABLE dept(
+        dept_id varchar(10) PRIMARY KEY,
+        dept_name varchar(3),
+        dept_location varchar(20)
+
+        );
+
+CREATE TABLE employee(
+    emp_id int PRIMARY KEY,
+    emp_name varchar(20),
+    dept_id varchar(10),
+    type_of_work varchar(20),
+    hourly_rate varchar(10),
+    FOREIGN KEY (dept_id) REFERENCES dept(dept_id)
+    );
+
+        CREATE TABLE adress(
+            emp_id int PRIMARY KEY,
+            street_no varchar(10),
+            street_name varchar (20),
+            city varchar (10),
+            zip_code varchar (10),
+            FOREIGN KEY (emp_id) REFERENCES employee(emp_id)
+            );
+            CREATE TABLE project(
+
+                project_id varchar(10) PRIMARY KEY,
+                project_name varchar(20),
+                project_location varchar(20)
+                );
+                CREATE TABLE ft_pt_work(
+                    project_id varchar(10),
+                    emp_id int,
+                    dept_id varchar(10),
+                    num_of_hours varchar(10),
+                    FOREIGN KEY(project_id)REFERENCES project(project_id),
+                    FOREIGN KEY(dept_id) REFERENCES employee(dept_id)
+                    );
+
+
+
+
+            CREATE table salary(
+                emp_no int PRIMARY KEY,
+                basic varchar (10),
+                allowance varchar(20),
+                deduction float(10),
+                net_salary float(10),
+                salary_date date,
+                FOREIGN KEY (emp_no) REFERENCES employee(emp_id)
+                );
